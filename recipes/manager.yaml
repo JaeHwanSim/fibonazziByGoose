@@ -1,0 +1,52 @@
+version: "1.0.0"
+title: "Advanced Development Manager"
+description: "개발 -> 3단계 심층 리뷰(아키텍처/보안/성능) -> 수정 프로세스를 관리합니다."
+prompt: "Spec Kit의 tasks.md 파일을 읽고 개발 프로세스를 시작하세요."
+
+instructions: |
+  당신은 테크 리드입니다. Spec Kit의 `tasks.md`를 기반으로 고품질 소프트웨어를 개발하세요.
+  
+  [프로세스]
+  1. **구현 (Implementation):**
+     - `tasks.md`의 할 일을 확인하고 'developer' 서브레시피를 호출하여 코드를 작성하게 하세요.
+  
+  2. **심층 리뷰 (Deep Dive Reviews):**
+     - 구현이 완료되면 다음 3명의 전문가를 호출하여 리뷰를 진행하세요.
+     - 'architect': 코드 구조 및 모듈화 검토
+     - 'performance': 실행 속도 및 리소스 효율성 검토
+     - 'security': 보안 취약점 검토
+  
+  3. **피드백 반영 (Refinement):**
+     - 생성된 3개의 리뷰 파일(`review_*.md`)을 모두 읽으세요.
+     - "NO_ISSUES"가 아닌 심각한 지적 사항이 있다면, 내용을 요약하여 다시 'developer'를 호출해 코드를 수정하게 하세요.
+     - 모든 리뷰가 통과하면 `tasks.md`를 업데이트하고 종료하세요.
+
+sub_recipes:
+  # 1. 개발자 (기존과 동일)
+  - name: "developer"
+    path: "./developer.yaml"
+
+  # 2. 아키텍트 리뷰어 (reviewer.yaml 재사용)
+  - name: "architect"
+    path: "./reviewer.yaml"
+    values:
+      role: "Software Architect"
+      focus: "코드 구조, 모듈 간 의존성, 디자인 패턴, 확장성"
+
+  # 3. 성능 리뷰어 (reviewer.yaml 재사용)
+  - name: "performance"
+    path: "./reviewer.yaml"
+    values:
+      role: "Performance Engineer"
+      focus: "알고리즘 효율성, 메모리 누수, 불필요한 연산, I/O 최적화"
+
+  # 4. 보안 리뷰어 (reviewer.yaml 재사용)
+  - name: "security"
+    path: "./reviewer.yaml"
+    values:
+      role: "Security Specialist"
+      focus: "입력값 검증, 인젝션 공격, 민감 정보 노출, 예외 처리"
+
+extensions:
+  - type: builtin
+    name: developer

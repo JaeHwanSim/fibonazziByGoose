@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Fibonacci Web Calculator API
+  version: 1.0.0
+  description: 피보나치 수열 계산을 위한 API
+
+paths:
+  /api/calculate:
+    post:
+      summary: n번째 피보나치 수와 주변 수열 계산
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                n:
+                  type: integer
+                  minimum: 0
+                  maximum: 100
+              required:
+                - n
+      responses:
+        '200':
+          description: 성공적인 계산 결과
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FibonacciResponse'
+        '400':
+          description: 잘못된 입력값
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    FibonacciResponse:
+      type: object
+      properties:
+        requested_n:
+          type: integer
+        result:
+          type: string
+        sequence:
+          type: array
+          items:
+            type: string
+        timestamp:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string

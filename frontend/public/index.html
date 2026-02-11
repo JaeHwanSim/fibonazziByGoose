@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피보나치 계산기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>피보나치 수 계산기</h1>
+        <form id="fib-form">
+            <label for="number">숫자 (0-100) 입력:</label>
+            <input type="number" id="number" name="number" min="0" max="100" required>
+            <button type="submit">계산</button>
+        </form>
+        <div id="result-container">
+            <h2>결과:</h2>
+            <p id="result"></p>
+            <h3>계산 시각:</h3>
+            <p id="timestamp"></p>
+            <h3>이전 수열:</h3>
+            <p id="sequence"></p>
+            <div id="error-container" class="error"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

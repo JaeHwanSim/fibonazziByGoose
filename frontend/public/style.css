@@ -1,0 +1,98 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --background-color: #f8f9fa;
+    --text-color: #212529;
+    --container-bg: #ffffff;
+    --error-color: #dc3545;
+    --border-radius: 0.5rem;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 2rem 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+}
+
+input[type="number"] {
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.75rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result-container {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+#result-container h2, #result-container h3 {
+    color: var(--secondary-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+#result, #timestamp, #sequence {
+    background-color: #f1f3f5;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    word-wrap: break-word;
+}
+
+.error {
+    color: var(--error-color);
+    margin-top: 1rem;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+}
